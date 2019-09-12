@@ -17,3 +17,11 @@ export const fetchStudentsByType = type => {
       return data.students;
     });
 };
+
+export const PostNewStudent = (name, startingCohort) => {
+  return axios
+    .post(`${baseURL}/students`, { name, startingCohort })
+    .then(({ data }) => {
+      return data.student;
+    });
+};
