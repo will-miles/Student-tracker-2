@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import * as api from '../api';
 import BlockNav from './BlockNav';
 import ViewToggler from './ViewToggler';
-import Addstudent from './AddStudent';
 
 class StudentList extends Component {
   state = {
@@ -44,9 +43,7 @@ class StudentList extends Component {
     const { type } = this.props;
     return (
       <div>
-        <ViewToggler insertStudent={this.insertStudent}>
-          <Addstudent insertStudent={this.insertStudent} />
-        </ViewToggler>
+        <ViewToggler insertStudent={this.insertStudent} />
         {type === 'current' ? <BlockNav /> : ''}
         <p>{students.length}</p>
         <table>

@@ -9,10 +9,11 @@ class ViewToggler extends Component {
   };
   render() {
     const { isShowing, i, message } = this.state;
+    const { insertStudent } = this.props;
     return (
       <div>
         <button onClick={this.handleClick}>{message[i]}</button>
-        {isShowing && <AddStudent />}
+        {isShowing && <AddStudent insertStudent={insertStudent} />}
       </div>
     );
   }
