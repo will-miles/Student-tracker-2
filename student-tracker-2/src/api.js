@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const baseURL = 'https://nc-student-tracker.herokuapp.com/api';
 
-export const fetchStudents = () => {
-  return axios.get(`${baseURL}/students`).then(({ data }) => {
+export const fetchStudents = (params) => {
+  return axios.get(`${baseURL}/students`, { params: params }).then(({ data }) => {
     return data.students;
   });
 };

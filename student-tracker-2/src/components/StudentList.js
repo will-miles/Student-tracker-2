@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import * as api from '../api';
 import BlockNav from './BlockNav';
 import ViewToggler from './ViewToggler';
+import SingleStudent from './SingleStudent'
+import { Router, Link } from '@reach/router';
 
 class StudentList extends Component {
   state = {
-    students: []
+    students: [],
+    selectedStudentId: ""
   };
 
   componentDidMount() {
@@ -19,15 +22,11 @@ class StudentList extends Component {
   }
 
   getstudents = () => {
-    if (!this.props.type) {
-      api.fetchStudents().then(students => {
-        this.setState({ students });
-      });
-    } else {
-      api.fetchStudentsByType(this.props.type).then(students => {
-        this.setState({ students });
-      });
-    }
+    const params = { grauated: !!this.props.type, block_slug: this.props.block }
+    console.log(this.props)
+    api.fetchStudents(params).then(students => {
+      this.setState({ students });
+    })
   };
 
   insertStudent = (name, cohort) => {
@@ -54,9 +53,10 @@ class StudentList extends Component {
               <th>Current Block:</th>
             </tr>
             {students.map(student => {
+              const { _id } = student;
               return (
                 <tr key={student._id}>
-                  <td>{student.name}</td>
+                  <td><Link to={_id}> {student.name}</Link></td>
                   <td>{student.startingCohort}</td>
                   <td>{student.currentBlock}</td>
                 </tr>
@@ -64,6 +64,9 @@ class StudentList extends Component {
             })}
           </tbody>
         </table>
+        <Router>
+          <SingleStudent path=":student_id" />
+        </Router>
       </div>
     );
   }
