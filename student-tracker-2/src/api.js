@@ -2,17 +2,9 @@ import axios from 'axios';
 
 const baseURL = 'https://nc-student-tracker.herokuapp.com/api';
 
-export const fetchStudents = (params) => {
-  return axios.get(`${baseURL}/students`, { params: params }).then(({ data }) => {
-    return data.students;
-  });
-};
-
-export const fetchStudentsByType = type => {
-  let graduated = false;
-  if (type === 'graduated') graduated = true;
+export const fetchStudents = params => {
   return axios
-    .get(`${baseURL}/students?graduated=${graduated}`)
+    .get(`${baseURL}/students`, { params: params })
     .then(({ data }) => {
       return data.students;
     });
@@ -24,4 +16,10 @@ export const PostNewStudent = (name, startingCohort) => {
     .then(({ data }) => {
       return data.student;
     });
+};
+
+export const getSingleStudent = id => {
+  return axios.get(`${baseURL}/students/${id}`).then(({ data }) => {
+    return data.student;
+  });
 };

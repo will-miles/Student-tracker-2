@@ -3,13 +3,11 @@ import { Link } from '@reach/router';
 
 const Nav = () => {
   return (
-    <div>
-      <nav>
-        <Link to="/">Home</Link> |{' '}
-        <Link to="/students/current">Current Students</Link> |{' '}
-        <Link to="/students/graduated">Graduated Students</Link>
-      </nav>
-    </div>
+    <nav className="navbar">
+      <Link to="/students">Home</Link> |{' '}
+      <Link to="/status/current/students">Current Students</Link> |{' '}
+      <Link to="/status/graduated/students">Graduated Students</Link>
+    </nav>
   );
 };
 

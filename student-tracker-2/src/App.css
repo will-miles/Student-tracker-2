@@ -1,8 +1,38 @@
 .App {
   text-align: center;
+  display: grid;
+  grid-template-areas:
+    'header'
+    'navBar'
+    'list';
 }
 
-table {
+/* table {
   margin-left: auto;
   margin-right: auto;
+} */
+
+.header {
+  grid-area: header;
+}
+
+.navbar {
+  grid-area: navBar;
+}
+
+.list {
+  margin-top: 10px;
+  grid-area: list;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.studentList {
+  background-color: hotpink;
+  height: 80vh;
+  overflow: scroll;
+}
+
+.student {
+  grid-area: student;
 }

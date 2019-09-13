@@ -12,13 +12,11 @@ function App() {
       <Nav />
       <Router>
         <StudentList path="/students/*" />
-        <StudentList path="/status/:type/students" />
-        <StudentList path="/block/:block/students" />
+        <StudentList path="/status/:type/students/*" />
+        <StudentList path="/block/:block/students/*" />
       </Router>
     </div>
   );
 }
-
-
 
 export default App;
