@@ -22,7 +22,7 @@ class StudentList extends Component {
   }
 
   getstudents = () => {
-    const params = { grauated: !!this.props.type, block_slug: this.props.block }
+    const params = { graduated: !!this.props.type, block_slug: this.props.block }
     console.log(this.props)
     api.fetchStudents(params).then(students => {
       this.setState({ students });

@@ -17,7 +17,7 @@ class ViewToggler extends Component {
       </div>
     );
   }
-  handleClick = event => {
+  handleClick = () => {
     const { isShowing, i } = this.state;
     this.setState({ isShowing: !isShowing, i: !i });
   };

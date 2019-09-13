@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class AddStudent extends Component {
   state = {
     name: '',
-    cohort: 0
+    cohort: ""
   };
 
   render() {
@@ -39,6 +39,7 @@ class AddStudent extends Component {
     const insertStudent = this.props.insertStudent;
     const { name, cohort } = this.state;
     insertStudent(name, cohort);
+    this.setState({ name: "", cohort: "" })
   };
 }
 
